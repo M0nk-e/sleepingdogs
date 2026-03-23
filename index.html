@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sleeping Dogs 2 — Fan Concept Pitch v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+TC:wght@300;400;700&family=IBM+Plex+Mono:wght@300;400&family=Playfair+Display:ital,wght@1,400;1,700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --red:#C8201A;--red-dim:#7A120E;--red-faint:rgba(200,32,26,0.07);
+  --gold:#D4A441;--gold-dim:#8A6820;--gold-faint:rgba(212,164,65,0.07);
+  --blue:#4A8FBF;--blue-faint:rgba(74,143,191,0.07);
+  --green:#5A9A5A;
+  --cream:#EDE8DC;--smoke:#A8A098;--smoke2:#7A7470;
+  --ink:#0A0A0B;--ink2:#0F0F12;--ink3:#181820;--ink4:#202028;--ink5:#28282F;
+  --border:rgba(212,164,65,0.15);--border2:rgba(200,32,26,0.2);--border3:rgba(74,143,191,0.2);
+}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--cream);font-family:'Noto Sans TC',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--ink)}
+::-webkit-scrollbar-thumb{background:var(--red-dim)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 4rem;height:60px;background:rgba(10,10,11,0.95);border-bottom:0.5px solid var(--border);backdrop-filter:blur(16px)}
+.nav-logo{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.12em;color:var(--red)}
+.nav-logo span{color:var(--cream)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-family:'IBM Plex Mono',monospace;font-size:.63rem;letter-spacing:.18em;text-transform:uppercase;color:var(--smoke);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+#progress{position:fixed;top:60px;left:0;height:2px;background:var(--red);z-index:300;width:0%;transition:width .08s linear}
+
+/* SECTIONS */
+section{min-height:100vh;padding:9rem 0 6rem;border-bottom:.5px solid var(--border);position:relative}
+.container{max-width:1160px;margin:0 auto;padding:0 4rem}
+
+/* LABELS */
+.slide-label{font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.35em;text-transform:uppercase;color:var(--red);margin-bottom:1.25rem;display:flex;align-items:center;gap:1rem}
+.slide-label::after{content:'';display:block;width:2.5rem;height:1px;background:var(--red-dim)}
+
+/* HEADINGS */
+h2.stitle{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,6vw,5.5rem);letter-spacing:.03em;line-height:.95;color:var(--cream);margin-bottom:2.5rem}
+h2.stitle .r{color:var(--red)}
+h2.stitle .g{color:var(--gold)}
+h3.ctitle{font-family:'Bebas Neue',sans-serif;font-size:1.45rem;letter-spacing:.05em;color:var(--gold);margin-bottom:.6rem}
+h3.ctitle.r{color:var(--red)}
+h3.ctitle.b{color:var(--blue)}
+h3.ctitle.w{color:var(--cream)}
+p.body{font-size:.93rem;line-height:1.85;color:var(--smoke);max-width:66ch}
+.mono{font-family:'IBM Plex Mono',monospace}
+.serif{font-family:'Playfair Display',serif;font-style:italic}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;padding:0;overflow:hidden;background:var(--ink)}
+.hero-ghost{position:absolute;right:-3rem;top:50%;transform:translateY(-50%) rotate(-90deg);font-family:'Bebas Neue',sans-serif;font-size:22vw;color:rgba(200,32,26,0.035);white-space:nowrap;pointer-events:none;letter-spacing:-.02em;user-select:none}
+.hero-content{max-width:1160px;margin:0 auto;padding:0 4rem;position:relative;z-index:2}
+.hero-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:.68rem;letter-spacing:.3em;color:var(--red);text-transform:uppercase;margin-bottom:1.75rem;display:flex;align-items:center;gap:1rem}
+.hero-eyebrow::before{content:'';display:block;width:2rem;height:1px;background:var(--red)}
+h1.hero-h{font-family:'Bebas Neue',sans-serif;font-size:clamp(6rem,13vw,11rem);line-height:.88;letter-spacing:.02em;color:var(--cream);margin-bottom:.15rem}
+h1.hero-h .r{color:var(--red)}
+.hero-sub{font-family:'Playfair Display',serif;font-style:italic;font-size:1.2rem;color:var(--smoke);margin-bottom:2.75rem;max-width:480px}
+.hero-rule{width:100%;height:1px;background:linear-gradient(90deg,var(--red) 0%,rgba(200,32,26,.08) 55%,transparent);margin:3.5rem 0 2.5rem}
+.hero-meta{display:flex;flex-wrap:wrap;gap:3.5rem}
+.hm-item label{font-family:'IBM Plex Mono',monospace;font-size:.57rem;letter-spacing:.28em;text-transform:uppercase;color:var(--smoke2);display:block;margin-bottom:.3rem}
+.hm-item span{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:.05em;color:var(--gold)}
+.hm-item .note{font-family:'IBM Plex Mono',monospace;font-size:.58rem;color:var(--smoke2);margin-top:.2rem}
+
+/* STAT BLOCKS */
+.stat-block{background:var(--ink3);border:.5px solid var(--border);padding:1.75rem 2rem 1.5rem;text-align:center}
+.stat-n{font-family:'Bebas Neue',sans-serif;font-size:3.2rem;letter-spacing:.02em;color:var(--red);line-height:1;margin-bottom:.4rem}
+.stat-n.g{color:var(--gold)}
+.stat-n.b{color:var(--blue)}
+.stat-n.gr{color:var(--green)}
+.stat-lbl{font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--smoke)}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:1.5px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px}
+
+/* CARDS */
+.card{background:var(--ink3);border:.5px solid var(--border);padding:2rem;position:relative}
+.card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--red)}
+.card.g::before{background:var(--gold)}
+.card.b::before{background:var(--blue)}
+.card.gr::before{background:var(--green)}
+.card.n::before{display:none}
+
+/* ALERT BOX */
+.alert{background:rgba(200,32,26,.08);border:.5px solid var(--red-dim);padding:1.5rem 2rem}
+.alert-title{font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--red);margin-bottom:.6rem}
+.alert p{font-size:.85rem;color:var(--smoke);line-height:1.75}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:3rem}
+.timeline::before{content:'';position:absolute;left:.8rem;top:0;bottom:0;width:1px;background:var(--border2)}
+.tl-item{position:relative;margin-bottom:2.5rem}
+.tl-item::before{content:'';position:absolute;left:-2.32rem;top:.45rem;width:10px;height:10px;border:1.5px solid var(--red);background:var(--ink);transform:rotate(45deg)}
+.tl-act{font-family:'IBM Plex Mono',monospace;font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--red);margin-bottom:.35rem}
+.tl-title{font-family:'Bebas Neue',sans-serif;font-size:1.35rem;letter-spacing:.05em;color:var(--cream);margin-bottom:.5rem}
+.tl-body{font-size:.85rem;color:var(--smoke);line-height:1.8;max-width:64ch}
+
+/* LAYERS */
+.layer{background:var(--ink3);border:.5px solid var(--border);margin-bottom:1.5px;padding:1.75rem 2rem;display:grid;grid-template-columns:72px 1fr;gap:2rem;align-items:start}
+.layer-n{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;color:rgba(200,32,26,.18);line-height:1}
+.layer h4{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:.05em;color:var(--cream);margin-bottom:.4rem}
+.layer p{font-size:.85rem;color:var(--smoke);line-height:1.8}
+
+/* DISCIPLINE METER */
+.meter-bar{width:100%;height:5px;background:var(--ink5);border:.5px solid var(--border);margin:.75rem 0 1.25rem;position:relative;overflow:hidden}
+.meter-fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,var(--blue) 0%,var(--green) 25%,var(--gold) 55%,var(--red) 80%,#8B0000 100%);width:100%}
+.meter-states{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px}
+.ms{background:var(--ink4);border:.5px solid var(--border);padding:1.25rem;text-align:center}
+.ms.active{background:var(--ink3)}
+.ms-name{font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.08em;color:var(--cream);margin-bottom:.5rem}
+.ms-desc{font-family:'IBM Plex Mono',monospace;font-size:.58rem;line-height:1.65;color:var(--smoke)}
+
+/* FACE TABLE */
+.ft{width:100%;border-collapse:collapse;font-size:.875rem}
+.ft th{font-family:'IBM Plex Mono',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--smoke);padding:.9rem 1.25rem;text-align:left;border-bottom:.5px solid var(--border);background:var(--ink4)}
+.ft td{padding:1rem 1.25rem;border-bottom:.5px solid rgba(212,164,65,.07);color:var(--smoke);vertical-align:top;font-size:.85rem}
+.ft tr:hover td{background:var(--red-faint)}
+.face-n{font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.06em;color:var(--cream)}
+
+/* SKILL BRANCH */
+.sb{background:var(--ink3);border:.5px solid var(--border);padding:1.75rem}
+.sb.r{border-color:var(--border2)}
+.sb.b{border-color:var(--border3)}
+.sb-head{border-bottom:.5px solid var(--border);padding-bottom:1rem;margin-bottom:1.25rem}
+.sb.r .sb-head{border-color:var(--border2)}
+.sb.b .sb-head{border-color:var(--border3)}
+.sb-title{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:.05em;color:var(--cream)}
+.sb-sub{font-family:'IBM Plex Mono',monospace;font-size:.58rem;letter-spacing:.2em;color:var(--smoke);text-transform:uppercase;margin-top:.2rem}
+.si{display:flex;gap:.9rem;margin-bottom:1.1rem;align-items:flex-start}
+.si-cost{font-family:'Bebas Neue',sans-serif;font-size:.95rem;min-width:1.4rem;line-height:1.5;color:var(--red)}
+.si-cost.g{color:var(--gold)}
+.si-cost.b{color:var(--blue)}
+.si-name{font-size:.83rem;color:var(--cream);margin-bottom:.18rem;font-weight:400}
+.si-desc{font-family:'IBM Plex Mono',monospace;font-size:.6rem;line-height:1.6;color:var(--smoke)}
+
+/* CHARACTER CARDS */
+.cc{background:var(--ink3);border:.5px solid var(--border);padding:2rem;display:flex;flex-direction:column;gap:.9rem}
+.cc.red{border-color:var(--border2)}
+.cc.blue{border-color:var(--border3)}
+.cc.gold{border-color:rgba(212,164,65,.3)}
+.cc-role{font-family:'IBM Plex Mono',monospace;font-size:.57rem;letter-spacing:.25em;text-transform:uppercase;color:var(--red)}
+.cc-role.g{color:var(--gold)}
+.cc-role.b{color:var(--blue)}
+.cc-role.gr{color:var(--green)}
+.cc-name{font-family:'Bebas Neue',sans-serif;font-size:1.75rem;letter-spacing:.04em;line-height:1;color:var(--cream)}
+.cc-meta{font-family:'IBM Plex Mono',monospace;font-size:.62rem;color:var(--smoke2);margin-top:-.35rem}
+.cc-bio{font-size:.82rem;line-height:1.8;color:var(--smoke);flex:1}
+.cc-quote{font-family:'Playfair Display',serif;font-style:italic;font-size:.82rem;color:var(--gold);border-left:2px solid var(--gold-dim);padding-left:1rem;line-height:1.65}
+.cc-quote.r{color:var(--red);border-color:var(--red-dim)}
+.cc-tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;padding:.25rem .6rem;border:.5px solid var(--border2);color:var(--red);margin-bottom:.25rem}
+.cc-tag.d{border-color:rgba(100,100,100,.3);color:var(--smoke2)}
+
+/* RETURNING CHARS GRID */
+.rc{background:var(--ink4);border:.5px solid var(--border);padding:1.5rem}
+.rc-name{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.04em;color:var(--cream);margin-bottom:.2rem}
+.rc-role{font-family:'IBM Plex Mono',monospace;font-size:.57rem;letter-spacing:.18em;text-transform:uppercase;color:var(--smoke2);margin-bottom:.6rem}
+.rc-status{font-family:'IBM Plex Mono',monospace;font-size:.6rem;color:var(--gold);margin-bottom:.5rem}
+.rc-status.dead{color:var(--smoke2)}
+.rc p{font-size:.78rem;color:var(--smoke);line-height:1.7}
+
+/* COMBAT TYPES */
+.et{background:var(--ink4);border:.5px solid var(--border);padding:1.25rem 1.5rem}
+.et-name{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:.05em;color:var(--cream);margin-bottom:.4rem}
+.et-tag{font-family:'IBM Plex Mono',monospace;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;padding:.2rem .5rem;background:var(--ink5);color:var(--smoke2);margin-bottom:.6rem;display:inline-block}
+.et p{font-size:.78rem;color:var(--smoke);line-height:1.7}
+.et .counter{font-family:'IBM Plex Mono',monospace;font-size:.6rem;color:var(--gold);margin-top:.4rem}
+
+/* MARKET BARS */
+.mb-row{display:flex;align-items:center;gap:1rem;margin-bottom:.9rem}
+.mb-label{font-family:'IBM Plex Mono',monospace;font-size:.63rem;letter-spacing:.1em;color:var(--smoke);min-width:160px;text-transform:uppercase}
+.mb-track{flex:1;height:5px;background:var(--ink5);border:.5px solid var(--border);position:relative}
+.mb-fill{position:absolute;left:0;top:0;bottom:0;background:var(--red)}
+.mb-fill.g{background:var(--gold)}
+.mb-fill.b{background:var(--blue)}
+.mb-val{font-family:'Bebas Neue',sans-serif;font-size:1.05rem;color:var(--cream);min-width:52px;text-align:right}
+
+/* CHOICE PANELS */
+.cp-grid{display:grid;grid-template-columns:1fr 36px 1fr;gap:0;align-items:start}
+.cp{background:var(--ink3);border:.5px solid var(--border);padding:1.75rem}
+.cp.r{border-color:var(--border2)}
+.cp-label{font-family:'IBM Plex Mono',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:.6rem;color:var(--smoke)}
+.cp-label.g{color:var(--gold)}
+.cp-label.r{color:var(--red)}
+.cp-title{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.05em;color:var(--cream);margin-bottom:.9rem}
+.cp-vs{display:flex;align-items:center;justify-content:center;background:var(--red);font-family:'Bebas Neue',sans-serif;font-size:.9rem;letter-spacing:.1em;color:var(--cream);writing-mode:vertical-rl;min-height:200px}
+.clist{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+.clist li{font-family:'IBM Plex Mono',monospace;font-size:.63rem;color:var(--smoke);padding-left:1rem;position:relative;line-height:1.6}
+.clist li::before{content:'›';position:absolute;left:0;color:var(--red)}
+
+/* FAN NOTE */
+.fan-note{background:var(--ink3);border:.5px solid rgba(212,164,65,.25);padding:2.75rem;position:relative;overflow:hidden}
+.fan-note::before{content:'"';font-family:'Playfair Display',serif;font-size:9rem;color:rgba(212,164,65,.05);position:absolute;top:-1.5rem;left:1rem;line-height:1;pointer-events:none}
+.fan-note p{font-family:'Playfair Display',serif;font-style:italic;font-size:1.1rem;line-height:1.9;color:var(--smoke);position:relative;z-index:1;max-width:74ch}
+
+/* IMAGE PLACEHOLDERS */
+.img-ph{background:var(--ink4);border:.5px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;overflow:hidden;position:relative}
+.img-ph::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 8px,rgba(212,164,65,.03) 8px,rgba(212,164,65,.03) 9px)}
+.img-ph-icon{width:36px;height:36px;opacity:.25}
+.img-ph-label{font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--smoke2);text-align:center;position:relative;z-index:1}
+.img-ph-sub{font-family:'IBM Plex Mono',monospace;font-size:.55rem;color:var(--smoke2);opacity:.6;text-align:center;position:relative;z-index:1}
+.img-ph-corner{position:absolute;width:12px;height:12px;border-color:var(--gold-dim);border-style:solid}
+.img-ph-corner.tl{top:8px;left:8px;border-width:1px 0 0 1px}
+.img-ph-corner.tr{top:8px;right:8px;border-width:1px 1px 0 0}
+.img-ph-corner.bl{bottom:8px;left:8px;border-width:0 0 1px 1px}
+.img-ph-corner.br{bottom:8px;right:8px;border-width:0 1px 1px 0}
+
+/* CLOSING */
+#closing{display:flex;align-items:center;min-height:100vh;background:var(--ink2)}
+.close-rule{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--red),transparent);margin:3rem 0}
+.close-tag{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,4rem);letter-spacing:.04em;line-height:1.1;color:var(--cream);max-width:16ch}
+.close-tag .r{color:var(--red)}
+.close-bottom{display:flex;align-items:flex-end;justify-content:space-between;margin-top:3.5rem}
+
+/* SECTION SPACERS */
+.gap1{height:1rem}.gap2{height:2rem}.gap3{height:3rem}.gap4{height:4rem}
+
+/* INLINE MARKS */
+.pill{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;padding:.2rem .55rem;border:.5px solid;margin-left:.4rem;position:relative;top:-.1em}
+.pill.r{border-color:var(--border2);color:var(--red)}
+.pill.g{border-color:rgba(212,164,65,.3);color:var(--gold)}
+.pill.b{border-color:var(--border3);color:var(--blue)}
+.pill.gr{border-color:rgba(90,154,90,.3);color:var(--green)}
+
+/* CANON NOTE */
+.canon{background:var(--ink4);border:.5px solid rgba(90,154,90,.25);padding:1.25rem 1.5rem;margin-bottom:1.5rem}
+.canon-label{font-family:'IBM Plex Mono',monospace;font-size:.57rem;letter-spacing:.22em;text-transform:uppercase;color:var(--green);margin-bottom:.4rem}
+.canon p{font-size:.8rem;color:var(--smoke);line-height:1.7}
+
+/* FOOTER */
+footer{background:var(--ink);border-top:.5px solid var(--border);padding:1.75rem 4rem;display:flex;align-items:center;justify-content:space-between}
+footer p{font-family:'IBM Plex Mono',monospace;font-size:.6rem;letter-spacing:.13em;color:var(--smoke2)}
+footer .r{color:var(--red)}
+
+@media(max-width:900px){
+  nav{padding:0 1.5rem}
+  .nav-links{display:none}
+  .container{padding:0 1.5rem}
+  .g2,.g3,.g4{grid-template-columns:1fr}
+  .cp-grid{grid-template-columns:1fr}
+  .cp-vs{writing-mode:horizontal-tb;min-height:auto;padding:.7rem}
+  footer{flex-direction:column;gap:.75rem}
+}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<nav>
+  <div class="nav-logo">Sleeping <span>Dogs 2</span></div>
+  <ul class="nav-links">
+    <li><a href="#origin">Origin</a></li>
+    <li><a href="#story">Story</a></li>
+    <li><a href="#combat">Combat</a></li>
+    <li><a href="#cast">Cast</a></li>
+    <li><a href="#returning">SD1 Returns</a></li>
+    <li><a href="#market">Market</a></li>
+    <li><a href="#why">The Case</a></li>
+  </ul>
+</nav>
+
+<!-- ═══════════════════════════════════════ HERO -->
+<section id="hero">
+  <div class="hero-ghost">WEI SHEN</div>
+  <div class="hero-content">
+    <div style="display:grid;grid-template-columns:1fr 340px;gap:3rem;align-items:center">
+      <div>
+        <div class="hero-eyebrow">Fan Concept Pitch — 2025 · Corrected & Expanded</div>
+        <h1 class="hero-h">SLEEPING<br><span class="r">DOGS 2</span></h1>
+        <p class="hero-sub">There is no going home clean.</p>
+      </div>
+      <div class="img-ph" style="height:420px;border-color:rgba(200,32,26,.25)">
+        <div class="img-ph-corner tl"></div>
+        <div class="img-ph-corner tr"></div>
+        <div class="img-ph-corner bl"></div>
+        <div class="img-ph-corner br"></div>
+        <svg class="img-ph-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="4" y="4" width="28" height="28" rx="1" stroke="#D4A441" stroke-width="1"/>
+          <circle cx="13" cy="14" r="3" stroke="#D4A441" stroke-width="1"/>
+          <path d="M4 26l8-7 5 5 5-6 10 9" stroke="#D4A441" stroke-width="1" stroke-linejoin="round"/>
+        </svg>
+        <div class="img-ph-label">Cover Art</div>
+        <div class="img-ph-sub">Wei Shen — Age 38<br>Key Art / Poster</div>
+      </div>
+    </div>
+    <div class="hero-rule"></div>
+    <div class="hero-meta">
+      <div class="hm-item">
+        <label>Wei Shen born</label>
+        <span>1984</span>
+        <div class="note">Age 27 in SD1 · Age 38 in SD2</div>
+      </div>
+      <div class="hm-item">
+        <label>SD2 is set</label>
+        <span>2022</span>
+        <div class="note">10 years after SD1</div>
+      </div>
+      <div class="hm-item">
+        <label>This fan's playthroughs</label>
+        <span>73×</span>
+        <div class="note">Since release day 2012</div>
+      </div>
+      <div class="hm-item">
+        <label>Confirmed SD2 dev</label>
+        <span>2013</span>
+        <div class="note">Cancelled. Shouldn't have been.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ ORIGIN -->
+<section id="origin">
+  <div class="container">
+    <div class="slide-label">00 — Origin</div>
+    <h2 class="stitle">Why This <span class="r">Exists</span></h2>
+
+    <div class="canon" style="max-width:720px">
+      <div class="canon-label">Confirmed: A Sequel Was Real</div>
+      <p>In early 2013, Square Enix and United Front Games were actively developing a Sleeping Dogs sequel. It was cancelled. The franchise has been silent since. The fans have not been. This pitch exists because twelve years of silence is twelve years too long.</p>
+    </div>
+
+    <div class="fan-note" style="margin-bottom:3.5rem">
+      <p>I have been playing Sleeping Dogs since release day 2012. I have finished it 73 times — not because I lacked other options, but because nothing else has done what that game did. It gave us a protagonist bleeding from both sides simultaneously, a city that felt alive, and a moral vertigo that most games are too afraid to attempt. This is a fan's case, built from lived knowledge, presented to whoever still holds the IP: the bones are here, the market is here, the audience has been waiting for a decade. Take this. Refine it. Make the game. Just don't release it the same quarter as GTA 6.</p>
+    </div>
+
+    <div class="g4">
+      <div class="stat-block"><div class="stat-n">2012</div><div class="stat-lbl">Original Release</div></div>
+      <div class="stat-block"><div class="stat-n g">1.5M</div><div class="stat-lbl">Units — First Month</div></div>
+      <div class="stat-block"><div class="stat-n b">91</div><div class="stat-lbl">Metacritic Score</div></div>
+      <div class="stat-block"><div class="stat-n">12yr</div><div class="stat-lbl">No Sequel. Still Waiting.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ STORY -->
+<section id="story">
+  <div class="container">
+    <div class="slide-label">01 — Narrative</div>
+    <h2 class="stitle">The <span class="r">Plot</span></h2>
+
+    <div class="g2" style="gap:4rem;margin-bottom:4rem;align-items:start">
+      <div>
+        <div class="canon" style="margin-bottom:1.5rem">
+          <div class="canon-label">Canon Detail — Wei's Mother</div>
+          <p>Wei Shen's mother was named <strong style="color:var(--cream);font-weight:400">Margaret Shen</strong>. She committed suicide after Wei's sister Mimi died of a drug overdose. Wei naming his daughter Margaret is not coincidence — it is the only tribute he could give both women in a single name.</p>
+        </div>
+        <p class="body" style="margin-bottom:1.25rem">Wei Shen, 38. Born Hong Kong, 1984. He left after the Sun On Yee war. He's SFPD Inspector now — respected, decorated, privately shattered. He has a daughter, Margaret, 7 years old. Her mother Lin died three days after delivery. Ruled a complication. Wei never questioned it. Grief is the most effective blindfold.</p>
+        <p class="body">Every morning: 5:47am. Same route to school. Same coffee. Same prayers at the shrine — a photograph of Lin that Margaret calls <em>Mama Light</em> because of how the candle makes it glow. Then Margaret is gone.</p>
+      </div>
+      <div>
+        <div class="card g" style="margin-bottom:1.5px">
+          <h3 class="ctitle">The Central Question</h3>
+          <p class="serif" style="font-size:1.05rem;color:var(--cream);line-height:1.7">How much of yourself are you willing to destroy to protect something you love?</p>
+        </div>
+        <div class="card" style="margin-bottom:1.5px">
+          <h3 class="ctitle">The First Turn</h3>
+          <p style="font-size:.85rem;color:var(--smoke);line-height:1.75">The kidnapping note is not a ransom demand. It is a <strong style="color:var(--cream);font-weight:400">Sun On Yee ledger entry</strong> — handwritten, dated 2012, in Uncle Po's hand. Wei is not chasing a kidnapper. He is being summoned back into a history he thought was buried. The trail starts in San Francisco. It ends in Hong Kong.</p>
+        </div>
+        <div class="card b">
+          <h3 class="ctitle b">The Promise to Fans</h3>
+          <p style="font-size:.85rem;color:var(--smoke);line-height:1.75">No hacking minigames. No Watch Dogs DNA. The Chinese cultural identity stays intact. HK returns — night markets, Aberdeen harbour, North Point, the old neighbourhoods being erased by money. Wei investigates like a man: on foot, through people, through patience, through violence when the alternatives run out.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="ctitle w" style="margin-bottom:1.5rem;font-family:'IBM Plex Mono',monospace;font-size:.9rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--smoke)">The Mystery — Three Layers Deep</h3>
+
+    <div class="layer">
+      <div class="layer-n">01</div>
+      <div>
+        <h4>The Splinter Faction</h4>
+        <p>Margaret was taken by a surviving cell of the Sun On Yee that formed after Wei dismantled its leadership. They believe Wei stole something from them when he went undercover — a ledger, a debt, an irreplaceable secret. This is what the player believes for most of Act One. It is the smallest layer of the truth.</p>
+      </div>
+    </div>
+    <div class="layer">
+      <div class="layer-n">02</div>
+      <div>
+        <h4>Lin Knew</h4>
+        <p>Lin's death was not a complication. She was Sun On Yee-adjacent in ways Wei never knew — her family carried an old debt across two generations. She had quietly started researching Wei's unresolved HK history. She never told him because she didn't want to bring that world back into their apartment. Her silence was love. It is also what killed her. This revelation lands in Act Two and dismantles Wei's entire relationship to his own grief.</p>
+      </div>
+    </div>
+    <div class="layer">
+      <div class="layer-n">03</div>
+      <div>
+        <h4>Raymond Mak — The Architect</h4>
+        <p>The person who designed the operation is <strong style="color:var(--cream);font-weight:400">Raymond Mak</strong> — Wei's handler from SD1. The steady, loyal, by-the-book cop who warned Wei about his psychological profile, who expressed doubt at every turn, who shook Wei's hand at the end of SD1 and let him go. He is not a monster. He is a man who made one catastrophic choice and has been managing its consequences with terrible competence for a decade. The reveal recontextualizes every interaction they had in the first game. Players who replay SD1 afterward will hear every scene differently.</p>
+      </div>
+    </div>
+
+    <div class="gap3"></div>
+
+    <h3 class="ctitle w" style="margin-bottom:1.5rem;font-family:'IBM Plex Mono',monospace;font-size:.9rem;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--smoke)">Story Acts</h3>
+
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-act">Act 1 — San Francisco</div>
+        <div class="tl-title">The Summons</div>
+        <p class="tl-body">Margaret disappears. The note arrives with the ledger entry. SFPD wants to handle it by the book. Wei knows the triads don't operate by California law. He begins working SF Chinatown contacts he hasn't touched in a decade — starting with Tran, Jackie's uncle, who still runs a chop shop in the Richmond. Through Tran he finds <strong style="color:var(--cream);font-weight:400">Hao Ma</strong>, Jackie's younger brother — 29 years old, volatile, running errands for the splinter faction for rent money, not loyalty. First real lead. It points East. Wei buys a one-way ticket to Hong Kong.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-act">Act 2 — Hong Kong</div>
+        <div class="tl-title">The City That Changed</div>
+        <p class="tl-body">Wei lands at Chek Lap Kok and the city doesn't recognise him. North Point is half-demolished for a development deal. Aberdeen has new glass towers on the waterfront. The old neighbourhood is being erased by money. <strong style="color:var(--cream);font-weight:400">Broken Nose Jiang</strong> — now Dragon Head of the Sun On Yee, the most powerful person in HK's underworld — contacts Wei within twelve hours of his arrival. Not to help. To warn him that what he's walking into is larger than his daughter. <strong style="color:var(--cream);font-weight:400">Jane Teng</strong>, now a Superintendent, has been watching the Sun On Yee for a decade and knows where the body is buried. <strong style="color:var(--cream);font-weight:400">Sifu Kwok</strong> is still in North Point, older, his school now surrounded by construction. The meditation scene happens here. The second revelation lands here. Wei sits down and doesn't get up for a while.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-act">Act 3 — Both Cities Bleed</div>
+        <div class="tl-title">The Debt Comes Due</div>
+        <p class="tl-body">SF port money and HK triad debt are the same conspiracy. The Ledger connects them. Raymond Mak is in both cities — his institutional reach spans an ocean. Wei moves between two worlds, two versions of himself, running out of time in both. <strong style="color:var(--cream);font-weight:400">Dani Reyes</strong> appears at Hong Kong International uninvited — Wei's SFPD partner, who got on a plane because she found evidence he missed. Wei stares at her. Says: <em>you're going to get yourself killed.</em> She says: <em>I know. You're welcome.</em> The third revelation surfaces. Wei chooses what he's willing to become.</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-act">Two Endings — Neither Is Triumph</div>
+        <div class="tl-title">The Reckoning</div>
+        <p class="tl-body"><strong style="color:var(--cream);font-weight:400">Path A — Inspector:</strong> Conspiracy exposed. Mak arrested. Margaret home. Wei files his report, sits at her bedside. His phone buzzes — Hong Kong number, no name. He stares at it. Puts it face-down. Credits. &nbsp;|&nbsp; <strong style="color:var(--cream);font-weight:400">Path B — Ghost:</strong> Evidence dies with the people who held it. The system continues. Wei and Margaret disappear — new names, new city. Somewhere nobody knows the name Wei Shen. The apartment is empty. The shrine is still on the shelf. Credits.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ COMBAT -->
+<section id="combat">
+  <div class="container">
+    <div class="slide-label">02 — Game Systems</div>
+    <h2 class="stitle">The Fighting <span class="r">Soul</span></h2>
+
+    <p class="body" style="margin-bottom:3.5rem">SD1 emphasised melee over gunplay — a deliberate design choice that made combat feel personal and intimate. SD2 builds from that foundation. Wei at 38 doesn't fight like he's proving something. The combat system reflects a decade of controlled living colliding with a decade of suppressed violence.</p>
+
+    <!-- DISCIPLINE METER -->
+    <h3 style="font-family:'IBM Plex Mono',monospace;font-size:.8rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--smoke);margin-bottom:.5rem">The Discipline Meter — Core Engine</h3>
+    <div class="meter-bar"></div>
+    <div style="display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:.58rem;color:var(--smoke2);margin-bottom:1.25rem">
+      <span>← Cold / Controlled</span><span>Broken / Unleashed →</span>
+    </div>
+    <div class="meter-states" style="margin-bottom:3.5rem">
+      <div class="ms active"><div class="ms-name" style="color:var(--blue)">Inspector</div><div class="ms-desc">Clean. Precise. Zero collateral. Cop face stays intact. Witnesses don't flee. Contacts cooperate.</div></div>
+      <div class="ms"><div class="ms-name" style="color:var(--green)">Ghost</div><div class="ms-desc">Unreadable. Style blends mid-combo. Most dangerous technically. Hardest state to hold.</div></div>
+      <div class="ms"><div class="ms-name" style="color:var(--gold)">Red Pole</div><div class="ms-desc">The past surfaces. Brutal. Effective. Costly. Story contacts begin to notice. Margaret's captivity shifts.</div></div>
+      <div class="ms" style="border-color:var(--border2)"><div class="ms-name" style="color:var(--red)">Unleashed</div><div class="ms-desc">Meter fully broken. No system — pure street. Some doors close permanently. One person walks away in Act 3.</div></div>
+    </div>
+
+    <div class="g2" style="gap:3rem;margin-bottom:3.5rem;align-items:start">
+      <div>
+        <h3 style="font-family:'IBM Plex Mono',monospace;font-size:.8rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--smoke);margin-bottom:1rem">What Fills the Meter</h3>
+        <ul class="clist">
+          <li>Taking damage without countering — SD1 canon, expanded</li>
+          <li>Losing a tail or surveillance target</li>
+          <li>Finding evidence tied to Lin's death</li>
+          <li>Failing to protect a civilian during a fight</li>
+          <li>Hearing Margaret's voice in captivity recordings sent by the faction</li>
+          <li>Psychological taunting from Chen Weiming's operatives</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-family:'IBM Plex Mono',monospace;font-size:.8rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--smoke);margin-bottom:1rem">What Empties It</h3>
+        <ul class="clist">
+          <li>Clean counter chains — SD1's core mechanic, now with deeper meaning</li>
+          <li>Completing a fight without a single environmental kill</li>
+          <li>Successful ghost-mode tailing sequences</li>
+          <li>Meditation at the shrine — available only in Act 1, unavailable after Ch.4</li>
+          <li>Talking to Dani — her presence is mechanically stabilising</li>
+          <li>Returning to Sifu Kwok's school in Act 2 (once only)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- MARTIAL ARTS -->
+    <h3 style="font-family:'IBM Plex Mono',monospace;font-size:.8rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--smoke);margin-bottom:1.25rem">Three Martial Vocabularies</h3>
+    <div class="g3" style="margin-bottom:.5rem">
+      <div class="card">
+        <h3 class="ctitle">Wing Chun</h3>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:.58rem;color:var(--red);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.75rem">Sifu Kwok's System · "The Quiet One"</div>
+        <p style="font-size:.82rem;color:var(--smoke);line-height:1.8;margin-bottom:1rem">Short range. Centerline control. Ends fights before they escalate. Fast chains, superior counter windows, minimal telegraphing. The cop's system — the one Wei can use in the world without explaining himself.</p>
+        <div style="border-left:2px solid var(--red-dim);padding-left:.9rem;margin-bottom:.6rem"><div class="si-name">Simultaneous Block-Strike</div><div class="si-desc">Counter + attack in the same frame. Unique animation, counter damage, combo count maintained. The Wing Chun signature.</div></div>
+        <div style="border-left:2px solid var(--red-dim);padding-left:.9rem;margin-bottom:.6rem"><div class="si-name">Chain Dissolution</div><div class="si-desc">Mid-combo redirect into joint lock. Zero damage. Total control. First thing taught. Last thing mastered.</div></div>
+        <div style="border-left:2px solid var(--red-dim);padding-left:.9rem"><div class="si-name">Dim Mak <span class="pill g">SD1 Canon</span></div><div class="si-desc">Sifu Kwok's final move from SD1, now the capstone of the Inspector path. Pressure-point strike — instant incapacitation, no killing. Bosses in SD1 could dodge it. In SD2 it is rarer and more powerful.</div></div>
+      </div>
+      <div class="card g">
+        <h3 class="ctitle">Hung Gar</h3>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:.58rem;color:var(--gold-dim);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.75rem">Sun On Yee Muscle · "The Heavy One"</div>
+        <p style="font-size:.82rem;color:var(--smoke);line-height:1.8;margin-bottom:1rem">Low stances. Iron bridge arms. Multiple opponents, durability, no rules. More stagger per hit. Environmental kill setups arise naturally — the style moves people.</p>
+        <div style="border-left:2px solid var(--gold-dim);padding-left:.9rem;margin-bottom:.6rem"><div class="si-name">Iron Bridge</div><div class="si-desc">Forearm block that punishes the attacker's limb. Enemies adjust their aggression after experiencing it twice.</div></div>
+        <div style="border-left:2px solid var(--gold-dim);padding-left:.9rem;margin-bottom:.6rem"><div class="si-name">Tiger Claw Rake</div><div class="si-desc">Unblockable grapple entry. Activates environmental kill prompt anywhere. Discipline meter watches every use.</div></div>
+        <div style="border-left:2px solid var(--gold-dim);padding-left:.9rem"><div class="si-name">Horse Stance Combo</div><div class="si-desc">Gets stronger as enemies hit you during it. Rewards absorbing damage over evading. Red Pole state amplifies. Inspector state locks it — Wei won't root like that in public.</div></div>
+      </div>
+      <div class="card b">
+        <h3 class="ctitle b">Street</h3>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:.58rem;color:var(--blue);letter-spacing:.15em;text-transform:uppercase;margin-bottom:.75rem">No Teacher · "The Honest One"</div>
+        <p style="font-size:.82rem;color:var(--smoke);line-height:1.8;margin-bottom:1rem">Surfaces only in Unleashed state. No style, no unlock tree. Pure function — elbows, headbutts, improvised, environmental, ugly. The game doesn't teach it. You discover it when the meter breaks.</p>
+        <div style="border-left:2px solid var(--blue);padding-left:.9rem;margin-bottom:.6rem"><div class="si-name">Unrestricted Environment</div><div class="si-desc">Every surface is an environmental kill at extended range. Weapons deal double damage when picked up mid-fight.</div></div>
+        <div style="border-left:2px solid var(--blue);padding-left:.9rem;margin-bottom:.6rem"><div class="si-name">No Counter Window</div><div class="si-desc">Wei cannot be countered in Unleashed. He also cannot be reasoned with. Story consequences activate immediately.</div></div>
+        <div style="border-left:2px solid var(--blue);padding-left:.9rem"><div class="si-name">The Secret Move</div><div class="si-desc">One move exists outside all three systems. Unlockable only when the meter is fully cold during Act 3's final confrontation. Sifu Kwok taught it the day before Wei left for America. Wei was never controlled enough to use it until now.</div></div>
+      </div>
+    </div>
+
+    <div class="canon" style="margin-bottom:3.5rem">
+      <div class="canon-label">SD1 Enemy Types — Evolved in SD2</div>
+      <p>SD1 had four enemy classes that required different tactics. SD2 keeps this design philosophy and expands it. <strong style="color:var(--cream);font-weight:400">Strikers</strong> (fast, light — counter-based), <strong style="color:var(--cream);font-weight:400">Brawlers</strong> (slow, powerful — must grapple or counter), <strong style="color:var(--cream);font-weight:400">Grapplers</strong> (immune to grapple, all-out offensive needed), <strong style="color:var(--cream);font-weight:400">Bosses</strong> (can dodge Dim Mak, can counter Wei). SD2 adds a fifth class: <strong style="color:var(--cream);font-weight:400">Veterans</strong> — enemies who spent time in the same underworld Wei did. They read his tells. They don't have a standard counter window. They have to be <em>watched</em> for a full combat cycle before their rhythm appears.</p>
+    </div>
+
+    <!-- GUNPLAY -->
+    <h3 style="font-family:'IBM Plex Mono',monospace;font-size:.8rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--smoke);margin-bottom:1rem">Gunplay — Hong Kong Gun-Fu, Not a Shooter</h3>
+    <div class="g2" style="gap:1.5px;margin-bottom:3.5rem">
+      <div class="card n" style="background:var(--ink4);border-color:var(--border)">
+        <h3 class="ctitle w" style="font-size:1.1rem">SD1 Foundation — Kept</h3>
+        <p style="font-size:.83rem;color:var(--smoke);line-height:1.8;margin-bottom:.75rem">SD1 treated gunplay as a last resort with cinematic flair — slow-motion leaping shots over obstacles, diving across bonnets, the feeling of a John Woo film made playable. This stays. Guns are not the primary language of combat. They are the escalation language.</p>
+        <ul class="clist">
+          <li>Slow-mo leap shot: vaulting obstacles while targeting</li>
+          <li>Car-top shooting: mounted on moving vehicles</li>
+          <li>Melee disarms: closing distance to strip a gun mid-firefight</li>
+          <li>Police trunk stashes: accessible with Police XP (now Inspector branch)</li>
+        </ul>
+      </div>
+      <div class="card n" style="background:var(--ink4);border-color:var(--border)">
+        <h3 class="ctitle w" style="font-size:1.1rem">SD2 Evolution</h3>
+        <p style="font-size:.83rem;color:var(--smoke);line-height:1.8;margin-bottom:.75rem">The Discipline Meter interacts with gunplay. Firing a weapon fills the meter. Clean disarms empty it slightly. Going Unleashed turns gunplay into total carnage — devastating and expensive.</p>
+        <ul class="clist">
+          <li>Ghost state: suppressed fire, reduced witness awareness</li>
+          <li>Inspector state: non-lethal options — taser, rubber rounds</li>
+          <li>Red Pole state: weapon damage amplified, accuracy reduced by aggression</li>
+          <li>Environmental gunplay: shoot gas canisters, vehicles, electrical panels</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- FACE SYSTEM -->
+    <h3 style="font-family:'IBM Plex Mono',monospace;font-size:.8rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--smoke);margin-bottom:1rem">The Face System — Which Wei Are You?</h3>
+    <table class="ft" style="margin-bottom:3.5rem">
+      <thead><tr><th>Mode</th><th>Presentation</th><th>Gains</th><th>Costs</th></tr></thead>
+      <tbody>
+        <tr><td><span class="face-n" style="color:var(--blue)">Inspector</span></td><td>Legitimate cop. Badge present.</td><td>Authority intel, institutional access, HKPD cooperation from Jane Teng</td><td>Burns criminal contacts, slower on the street, Jiang won't deal directly</td></tr>
+        <tr><td><span class="face-n" style="color:var(--green)">Ghost</span></td><td>Nobody. Civilian. Forgettable.</td><td>Invisible movement, surprise advantage, no ambient heat</td><td>No backup, no credibility, no fear factor — some contacts won't take you seriously</td></tr>
+        <tr><td><span class="face-n" style="color:var(--red)">Red Pole</span></td><td>Triad enforcer. The old Wei.</td><td>Deep underworld access, fear-based compliance, Jiang's full cooperation</td><td>SFPD heat, cover burns, Margaret's captivity narrative shifts toward worse conditions</td></tr>
+      </tbody>
+    </table>
+
+    <!-- SKILL TREE -->
+    <h3 style="font-family:'IBM Plex Mono',monospace;font-size:.8rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--smoke);margin-bottom:1.25rem">Skill Tree — Three Branches, One Root</h3>
+    <div class="g3" style="margin-bottom:3.5rem;align-items:start">
+      <div class="sb">
+        <div class="sb-head"><div class="sb-title" style="color:var(--blue)">Inspector</div><div class="sb-sub">"The Badge"</div></div>
+        <div class="si"><div class="si-cost b">1</div><div><div class="si-name">Clean Hands</div><div class="si-desc">Arrests instead of kills. Grapple + button cuffs. Shapes specific story outcomes.</div></div></div>
+        <div class="si"><div class="si-cost b">2</div><div><div class="si-name">Read The Room</div><div class="si-desc">Area entry highlights 2 priority threats + nearest exit automatically.</div></div></div>
+        <div class="si"><div class="si-cost b">3</div><div><div class="si-name">Institutional Memory</div><div class="si-desc">Investigation scenes reveal a clue layer only a cop would notice. Changes what Wei sees.</div></div></div>
+        <div class="si"><div class="si-cost b">4</div><div><div class="si-name">Badge Carry</div><div class="si-desc">Flash credentials to de-escalate civilian witnesses. Stops public fight heat accumulation.</div></div></div>
+        <div class="si"><div class="si-cost b">5</div><div><div class="si-name">The Whole Picture</div><div class="si-desc">Interrogations gain a third option — the patient one. Takes longer. Gets more. Burns nothing.</div></div></div>
+      </div>
+      <div class="sb b">
+        <div class="sb-head"><div class="sb-title" style="color:var(--green)">Ghost</div><div class="sb-sub">"The Space"</div></div>
+        <div class="si"><div class="si-cost" style="color:var(--green)">1</div><div><div class="si-name">Negative Space</div><div class="si-desc">Crowd blend. Movement through groups without triggering enemy awareness cones.</div></div></div>
+        <div class="si"><div class="si-cost" style="color:var(--green)">2</div><div><div class="si-name">Register Shift</div><div class="si-desc">Switch Inspector/Red Pole mid-mission without full meter consequence. Tight window.</div></div></div>
+        <div class="si"><div class="si-cost" style="color:var(--green)">3</div><div><div class="si-name">Counter-Surveillance</div><div class="si-desc">Minimap pulse when Wei is being followed. Doesn't say who. Just: someone's there.</div></div></div>
+        <div class="si"><div class="si-cost" style="color:var(--green)">4</div><div><div class="si-name">Borrowed Face</div><div class="si-desc">Lift jacket or ID from unconscious enemy for restricted area access.</div></div></div>
+        <div class="si"><div class="si-cost" style="color:var(--green)">5</div><div><div class="si-name">Nobody</div><div class="si-desc">10-second ambient invisibility. Not supernatural — just Wei moving through a space the way water does. Discipline meter freezes during activation.</div></div></div>
+      </div>
+      <div class="sb r">
+        <div class="sb-head"><div class="sb-title" style="color:var(--red)">Red Pole</div><div class="sb-sub">"The Past"</div></div>
+        <div class="si"><div class="si-cost">1</div><div><div class="si-name">Old Muscle Memory</div><div class="si-desc">Hung Gar combos available from the start. The body never forgot.</div></div></div>
+        <div class="si"><div class="si-cost">2</div><div><div class="si-name">Environmental Fluency</div><div class="si-desc">Kill range doubled. Red glow on objects further away. The room is always a weapon.</div></div></div>
+        <div class="si"><div class="si-cost">3</div><div><div class="si-name">Iron Will</div><div class="si-desc">Unleashed duration doubled. Recovery to Ghost from Unleashed possible — rare input sequence, taught once.</div></div></div>
+        <div class="si"><div class="si-cost">4</div><div><div class="si-name">The Full Weight</div><div class="si-desc">Horse Stance absorbs up to 5 hits; converts them into a single explosive release strike.</div></div></div>
+        <div class="si"><div class="si-cost">5</div><div><div class="si-name">Red Pole</div><div class="si-desc">Title returns. Full Sun On Yee authority under Jiang in HK. Act 3 exclusive paths unlock. Consequences are permanent and significant.</div></div></div>
+      </div>
+    </div>
+
+    <!-- MARGARET MECHANIC -->
+    <h3 style="font-family:'IBM Plex Mono',monospace;font-size:.8rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--smoke);margin-bottom:1rem">The Margaret Mechanic — Stakes Without Timers</h3>
+    <div class="cp-grid" style="margin-bottom:1rem">
+      <div class="cp">
+        <div class="cp-label g">Patient choices</div>
+        <div class="cp-title">Open Doors</div>
+        <ul class="clist">
+          <li>Contacts provide better intel and access</li>
+          <li>Margaret's captors treat her better — felt two acts later</li>
+          <li>Inspector and Ghost paths remain available</li>
+          <li>The moral resolution isn't poisoned before you reach it</li>
+        </ul>
+      </div>
+      <div class="cp-vs">VS</div>
+      <div class="cp r">
+        <div class="cp-label r">Brutal choices</div>
+        <div class="cp-title">Close Doors</div>
+        <ul class="clist">
+          <li>Faster results — at permanent cost</li>
+          <li>Some contacts walk away and don't come back</li>
+          <li>Margaret is moved — you don't see it for two acts</li>
+          <li>The Red Pole path widens. Everything else narrows.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card g">
+      <p class="serif" style="font-size:.95rem;color:var(--smoke);line-height:1.8">No health bar for Margaret. No countdown. No manufactured urgency. Every decision shifts the <em>narrative path</em> of her captivity. Consequences arrive two acts later when a contact tells you she was moved, or treated better, or worse. That is real dread. The game respects you enough not to explain it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ NEW CAST -->
+<section id="cast">
+  <div class="container">
+    <div class="slide-label">03 — New Cast</div>
+    <h2 class="stitle">The New <span class="r">Characters</span></h2>
+
+    <div class="g2" style="margin-bottom:1.5px;align-items:start">
+      <div class="cc">
+        <div class="img-ph" style="height:200px;margin-bottom:1rem">
+          <div class="img-ph-corner tl"></div><div class="img-ph-corner tr"></div><div class="img-ph-corner bl"></div><div class="img-ph-corner br"></div>
+          <svg class="img-ph-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="28" height="28" rx="1" stroke="#D4A441" stroke-width="1"/><circle cx="13" cy="14" r="3" stroke="#D4A441" stroke-width="1"/><path d="M4 26l8-7 5 5 5-6 10 9" stroke="#D4A441" stroke-width="1" stroke-linejoin="round"/></svg>
+          <div class="img-ph-label">Character Portrait</div>
+          <div class="img-ph-sub">Wei Shen · Age 38</div>
+        </div>
+        <div><div class="cc-role">Protagonist</div><div class="cc-name">Wei Shen</div><div class="cc-meta">Born 1984 · Age 38 in SD2 · SFPD Inspector / Former Red Pole</div></div>
+        <div class="cc-bio">Lean and weathered. Salt-and-pepper at the temples, one pronounced silver streak above the left ear — a stress response he never fully recovered from two years after HK. A scar along his jaw from Aberdeen that he tells Margaret a cat gave him. She doesn't believe him. He wakes at 5:47am every morning, thirteen minutes before his alarm, the way men wake who trained themselves never to be caught sleeping. He braids her hair badly on school mornings. She corrects him. He named her Margaret after his mother. He has never said this out loud to anyone.</div>
+        <div class="cc-quote">He is exceptional at exactly one thing — surviving worlds that destroy everyone around him. That gift has a cost. The cost has a name.</div>
+      </div>
+      <div class="cc">
+        <div class="img-ph" style="height:200px;margin-bottom:1rem">
+          <div class="img-ph-corner tl"></div><div class="img-ph-corner tr"></div><div class="img-ph-corner bl"></div><div class="img-ph-corner br"></div>
+          <svg class="img-ph-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="28" height="28" rx="1" stroke="#D4A441" stroke-width="1"/><circle cx="13" cy="14" r="3" stroke="#D4A441" stroke-width="1"/><path d="M4 26l8-7 5 5 5-6 10 9" stroke="#D4A441" stroke-width="1" stroke-linejoin="round"/></svg>
+          <div class="img-ph-label">Character Portrait</div>
+          <div class="img-ph-sub">Margaret Shen · Age 7</div>
+        </div>
+        <div><div class="cc-role">The Stake</div><div class="cc-name">Margaret Shen</div><div class="cc-meta">Age 7 · Wei's Daughter · Named for his mother Margaret Shen</div></div>
+        <div class="cc-bio">Small and absolute. She has the certainty of someone who has never been lied to yet. She asks: <em>Do bad people know they're bad or do they think they're good?</em> Wei answered wrong the first time. She made him try again. She carries a worn stuffed rabbit called Sir and is precise about his position in her school bag. In captivity she does not scream. She observes. She speaks to her captors carefully — friendly, holding something back. One lower-level guard begins bringing her extra food. She thanks him by name. She is seven years old and already understanding that people are the terrain.</div>
+        <div class="cc-quote">She has never been to Hong Kong. She knows it only as the place on the map her father traces sometimes when he doesn't know she's watching.</div>
+      </div>
+    </div>
+
+    <div class="g2" style="margin-bottom:1.5px;align-items:start">
+      <div class="cc red">
+        <div class="img-ph" style="height:200px;margin-bottom:1rem;border-color:rgba(200,32,26,.25)">
+          <div class="img-ph-corner tl"></div><div class="img-ph-corner tr"></div><div class="img-ph-corner bl"></div><div class="img-ph-corner br"></div>
+          <svg class="img-ph-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="28" height="28" rx="1" stroke="#C8201A" stroke-width="1"/><circle cx="13" cy="14" r="3" stroke="#C8201A" stroke-width="1"/><path d="M4 26l8-7 5 5 5-6 10 9" stroke="#C8201A" stroke-width="1" stroke-linejoin="round"/></svg>
+          <div class="img-ph-label" style="color:var(--red)">Character Portrait</div>
+          <div class="img-ph-sub">Raymond Mak · Approx. 55</div>
+        </div>
+        <div><div class="cc-role" style="color:var(--red)">The Revelation — SD1 Villain Recontextualised</div><div class="cc-name">Raymond Mak</div><div class="cc-meta">Approx. age 55 · Former Chief Inspector HKPD · Voiced by Byron Mann in SD1</div></div>
+        <div style="margin-bottom:.5rem"><span class="cc-tag">ALIVE</span> <span class="cc-tag">SD1 CANON CHARACTER</span></div>
+        <div class="cc-bio">In SD1 he was the steady voice on the line — patient, professional, by-the-book. He warned Wei about his psychological profile. He expressed doubt at every turn. He shook Wei's hand at the end and let him go. He is not clean. In SD2 he appears first as a ghost — a name appearing adjacent to decisions in old case files that don't add up. He never stopped running Wei Shen. He just changed the operation. He is not a monster: he is a portrait of institutional rot. Every compromise was meant to be the last one. He loved Wei, in his way. He still does. That is the unbearable part.</div>
+        <div class="cc-quote r">"I kept you alive. I kept the operation functional. You want to call it betrayal? Call it. You wouldn't be here to call it anything."</div>
+      </div>
+      <div class="cc">
+        <div class="img-ph" style="height:200px;margin-bottom:1rem">
+          <div class="img-ph-corner tl"></div><div class="img-ph-corner tr"></div><div class="img-ph-corner bl"></div><div class="img-ph-corner br"></div>
+          <svg class="img-ph-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="28" height="28" rx="1" stroke="#D4A441" stroke-width="1"/><circle cx="13" cy="14" r="3" stroke="#D4A441" stroke-width="1"/><path d="M4 26l8-7 5 5 5-6 10 9" stroke="#D4A441" stroke-width="1" stroke-linejoin="round"/></svg>
+          <div class="img-ph-label">Character Portrait</div>
+          <div class="img-ph-sub">Chen Weiming "Phantom" · Age 55</div>
+        </div>
+        <div><div class="cc-role">Primary Antagonist</div><div class="cc-name">Chen Weiming</div><div class="cc-meta">Age 55 · "Phantom" · Sun On Yee Founding Enforcer · New Character</div></div>
+        <div class="cc-bio">He built the Sun On Yee's infrastructure — the money routes, the loyal nodes, the hidden architecture. Then watched others call it theirs. A founding-era enforcer quietly made peripheral when consolidation came. He has waited with the patience of someone who has nothing else. His grievance is legitimate. His methods broke. He reads Meditations with complete sincerity and quotes Marcus Aurelius in conversation. He does not appear until Act Two — before that he is only a pattern, in the precision of the kidnapping, in the specific documents left as breadcrumbs. He meets Wei for the first time at a Wan Chai restaurant, food already ordered for both of them.</div>
+        <div class="cc-quote">"I was sorry about Lin. That wasn't my instruction." — The most disturbing sentence in the game. He means it completely.</div>
+      </div>
+    </div>
+
+    <div class="g2" style="margin-bottom:1.5px;align-items:start">
+      <div class="cc blue">
+        <div class="img-ph" style="height:200px;margin-bottom:1rem;border-color:rgba(74,143,191,.25)">
+          <div class="img-ph-corner tl"></div><div class="img-ph-corner tr"></div><div class="img-ph-corner bl"></div><div class="img-ph-corner br"></div>
+          <svg class="img-ph-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="28" height="28" rx="1" stroke="#4A8FBF" stroke-width="1"/><circle cx="13" cy="14" r="3" stroke="#4A8FBF" stroke-width="1"/><path d="M4 26l8-7 5 5 5-6 10 9" stroke="#4A8FBF" stroke-width="1" stroke-linejoin="round"/></svg>
+          <div class="img-ph-label" style="color:var(--blue)">Character Portrait</div>
+          <div class="img-ph-sub">Dani Reyes · Age 33</div>
+        </div>
+        <div><div class="cc-role b">The Anchor</div><div class="cc-name">Dani Reyes</div><div class="cc-meta">Age 33 · SFPD Partner · New Character</div></div>
+        <div class="cc-bio">Second-generation Filipino-American. Sunset District, three miles from Wei's apartment. She became a cop the way Wei became a cop — the alternative was the street and she chose differently. She has no illusions about the institution. She chose it anyway. She gets on a plane to Hong Kong uninvited, midway through Act Two. Wei sees her at arrivals. Doesn't speak for a long moment. Then: <em>You're going to get yourself killed.</em> She looks at him. <em>I know. You're welcome.</em> She is the throughline to the world Wei is supposed to live in. Every scene with her is a reminder of what he is risking.</div>
+      </div>
+      <div class="cc">
+        <div class="img-ph" style="height:200px;margin-bottom:1rem">
+          <div class="img-ph-corner tl"></div><div class="img-ph-corner tr"></div><div class="img-ph-corner bl"></div><div class="img-ph-corner br"></div>
+          <svg class="img-ph-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="4" width="28" height="28" rx="1" stroke="#D4A441" stroke-width="1"/><circle cx="13" cy="14" r="3" stroke="#D4A441" stroke-width="1"/><path d="M4 26l8-7 5 5 5-6 10 9" stroke="#D4A441" stroke-width="1" stroke-linejoin="round"/></svg>
+          <div class="img-ph-label">Character Portrait</div>
+          <div class="img-ph-sub">Hao Ma · Age 29</div>
+        </div>
+        <div><div class="cc-role">The Wild Card</div><div class="cc-name">Hao Ma</div><div class="cc-meta">Age 29 · Jackie Ma's Younger Brother · New Character</div></div>
+        <div class="cc-bio">Jackie Ma died in SD1 — tortured by Liu Shen Tong on Big Smile Lee's orders. Hao grew up in that shadow. Volatile. Angry. In the splinter faction because the money covered rent and nobody asked hard questions. He doesn't know the full shape of what he's inside. When Wei finds him in Act One: <em>You were with him. You came out. He didn't.</em> Wei has no clean answer. His arc is quiet, earns everything, and connects directly through his uncle Tran — who Wei finds first, working the same chop shop as always.</div>
+        <div class="cc-quote">He becomes useful not because he forgives Wei, but because the truth of what happened to Jackie is worse than what he imagined, and surviving it requires him to choose.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ RETURNING CAST -->
+<section id="returning">
+  <div class="container">
+    <div class="slide-label">04 — Returning From SD1</div>
+    <h2 class="stitle">Who <span class="r">Survived</span></h2>
+
+    <p class="body" style="margin-bottom:3rem">Every returning SD1 character is emotional capital. Players remember them. That recognition is the sequel's first act of goodwill. Use it deliberately.</p>
+
+    <div class="g3" style="margin-bottom:1.5px">
+      <div class="rc">
+        <div class="rc-name">Broken Nose Jiang</div>
+        <div class="rc-role">Dragon Head — Sun On Yee · Voiced: Elizabeth Sung</div>
+        <div class="rc-status">ALIVE · DRAGON HEAD</div>
+        <p>Correction from concept v1: Jiang is not just running Aberdeen. She is <strong style="color:var(--cream);font-weight:400">Dragon Head of the Sun On Yee</strong> — the most powerful position in HK organised crime, achieved after Wei dismantled the old leadership. In SD2 she arrives in Act Two on her own terms. The alliance with Wei is purely transactional. She knows more about Lin than she should. She's known for years. She said nothing because it wasn't her debt to pay. In Act Three this becomes untenable. <em>"You want justice or you want your daughter back? Pick one."</em></p>
+      </div>
+      <div class="rc">
+        <div class="rc-name">Jane Teng</div>
+        <div class="rc-role">Inspector HKPD → Superintendent · Voiced: Kelly Hu</div>
+        <div class="rc-status">ALIVE · PROMOTED</div>
+        <p>Investigated Wei throughout SD1, suspected him, ultimately respected him. She stayed in Hong Kong. She is now a Superintendent who has been watching Jiang's Sun On Yee for a decade and knows where every body is buried. In Act Two she is the one person on the police side who tells Wei exactly how much has changed — and exactly how little Raymond Mak was what he appeared to be. She knew something was wrong. She couldn't prove it. That has cost her ten years of sleep.</p>
+      </div>
+      <div class="rc">
+        <div class="rc-name">Sifu Kwok</div>
+        <div class="rc-role">Martial Arts Instructor · North Point · Voiced: James Lew</div>
+        <div class="rc-status">ALIVE · OLDER · SCHOOL STILL STANDING</div>
+        <p>Wei's martial arts teacher. His school in North Point is now surrounded by construction — the neighbourhood is being erased. In SD1 he taught Wei <strong style="color:var(--cream);font-weight:400">Dim Mak</strong> as his final, most powerful technique. In SD2 his school is where Act Two's only moment of stillness happens. Wei visits once. Sifu is older, slower, but his eyes are the same. He teaches Wei one more thing — the move that unlocks at the end of Act Three when the Discipline meter is fully cold.</p>
+      </div>
+    </div>
+    <div class="g3" style="margin-bottom:1.5px">
+      <div class="rc">
+        <div class="rc-name">Conroy Wu</div>
+        <div class="rc-role">Winston's Former Lieutenant · Water Street</div>
+        <div class="rc-status">ALIVE · BITTER · STILL IN WATER STREET</div>
+        <p>Winston's right hand in SD1 — hot-headed, steroid-fuelled, dim but loyal. He runs what's left of Water Street under Jiang's umbrella, ten years on. In his version of history, Wei Shen is the reason Winston is dead. He's not entirely wrong. He becomes an obstacle before he becomes an asset. The moment he becomes useful is earned, not given.</p>
+      </div>
+      <div class="rc">
+        <div class="rc-name">Tran</div>
+        <div class="rc-role">Jackie Ma's Uncle · Chop Shop Operator</div>
+        <div class="rc-status">ALIVE · STILL RUNNING THE SHOP</div>
+        <p>Jackie's uncle. Ran a chop shop in SD1. In SD2 he is still in the Richmond District in SF, still running the same operation. He is Wei's first real lead in Act One — the thread that connects Wei, Jackie's memory, and Hao in a single scene. He doesn't want to be involved. He already is.</p>
+      </div>
+      <div class="rc">
+        <div class="rc-name">Mrs. Chu</div>
+        <div class="rc-role">Winston's Mother · Aberdeen</div>
+        <div class="rc-status">ALIVE · GRIEVING · SHARP AS EVER</div>
+        <p>Winston's mother. She killed Dogeyes with her bare hands in SD1. She is still in Aberdeen, older, formidable. She knows things about the Sun On Yee's founding that nobody else will say. She will speak to Wei exactly once, in Act Two. What she says changes the shape of everything that comes after.</p>
+      </div>
+    </div>
+
+    <div class="gap2"></div>
+
+    <h3 style="font-family:'IBM Plex Mono',monospace;font-size:.8rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--smoke2);margin-bottom:1rem">Canonically Dead — Do Not Resurrect</h3>
+    <div class="g4">
+      <div class="rc" style="opacity:.6">
+        <div class="rc-name" style="font-size:1rem">Jackie Ma</div>
+        <div class="rc-status dead">DEAD — Tortured by Liu Shen Tong</div>
+        <p>Wei's childhood friend. His death drives Wei's rage in SD1's final act. His younger brother Hao carries the wound forward into SD2.</p>
+      </div>
+      <div class="rc" style="opacity:.6">
+        <div class="rc-name" style="font-size:1rem">Uncle Po</div>
+        <div class="rc-status dead">DEAD — Poisoned by Pendrew</div>
+        <p>Dragon Head of the Sun On Yee. His death triggered the power struggle Wei exploited. The Ledger is his.</p>
+      </div>
+      <div class="rc" style="opacity:.6">
+        <div class="rc-name" style="font-size:1rem">Winston Chu</div>
+        <div class="rc-status dead">DEAD — Wedding massacre</div>
+        <p>Wei's first triad patron. Killed alongside Peggy at his own wedding. His death elevated Wei to Red Pole.</p>
+      </div>
+      <div class="rc" style="opacity:.6">
+        <div class="rc-name" style="font-size:1rem">Thomas Pendrew</div>
+        <div class="rc-status dead">ARRESTED → LIKELY DEAD IN PRISON</div>
+        <p>The superintendent who betrayed Wei. Arrested at the end of SD1. Wei told him his old friends were waiting for him inside. They were.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ MARKET -->
+<section id="market">
+  <div class="container">
+    <div class="slide-label">05 — Market Case</div>
+    <h2 class="stitle">Why the <span class="r">Market</span> Needs This</h2>
+
+    <div class="g2" style="gap:4rem;margin-bottom:4rem;align-items:start">
+      <div>
+        <p class="body" style="margin-bottom:1.5rem">The open-world action genre has become saturated with scale over identity. Sleeping Dogs was a masterclass in doing <em>one city brilliantly</em> rather than several cities adequately. The audience for morally complex, culturally specific, narrative-driven open-world games has only grown since 2012.</p>
+        <p class="body">SD2 is not competing with GTA. It is competing with the gap GTA doesn't fill — the intimate, character-driven, non-American crime story set in a city with genuine cultural identity. That gap has been empty for twelve years. The audience for it has been getting older, earning more, and spending it on games that consistently fail to scratch the same itch.
+        </p>
+      </div>
+      <div>
+        <div class="alert">
+          <div class="alert-title">Critical Release Timing Warning</div>
+          <p>Do not release Sleeping Dogs 2 in the same quarter as GTA 6. This game's identity is its competitive edge — GTA's marketing footprint will consume all oxygen in the genre for months. SD2 needs clear air. Release 8–12 months after GTA 6 settles. Let it be discovered, not buried.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="max-width:620px;margin-bottom:3.5rem">
+      <div class="mb-row"><div class="mb-label">Open World Action RPG</div><div class="mb-track"><div class="mb-fill" style="width:92%"></div></div><div class="mb-val">$47B</div></div>
+      <div class="mb-row"><div class="mb-label">Narrative-Led Games</div><div class="mb-track"><div class="mb-fill g" style="width:70%"></div></div><div class="mb-val">$24B</div></div>
+      <div class="mb-row"><div class="mb-label">Non-US OW Crime Gap</div><div class="mb-track"><div class="mb-fill" style="width:89%;background:var(--gold-dim)"></div></div><div class="mb-val">Unmet</div></div>
+      <div class="mb-row"><div class="mb-label">SD Community · Active</div><div class="mb-track"><div class="mb-fill b" style="width:40%"></div></div><div class="mb-val">450K+</div></div>
+    </div>
+
+    <div class="g4">
+      <div class="stat-block"><div class="stat-n">450K+</div><div class="stat-lbl">Reddit Community — Still Active</div></div>
+      <div class="stat-block"><div class="stat-n g">12yr</div><div class="stat-lbl">Pent-Up Demand. No Sequel.</div></div>
+      <div class="stat-block"><div class="stat-n b">2013</div><div class="stat-lbl">Sequel Was In Dev. Was Cancelled.</div></div>
+      <div class="stat-block"><div class="stat-n gr">0</div><div class="stat-lbl">Culturally Equivalent Games Since</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ WHY -->
+<section id="why">
+  <div class="container">
+    <div class="slide-label">06 — The Fan's Case</div>
+    <h2 class="stitle">Why I Built <span class="r">This</span></h2>
+
+    <div class="g2" style="gap:4rem;align-items:start;margin-bottom:4rem">
+      <div>
+        <p class="body" style="margin-bottom:1.5rem">This is not a developer's document. There are no production budgets, no milestone schedules, no team compositions. This is a twelve-year fan who has finished the original game 73 times telling whoever holds the IP: the felt knowledge of why the first game worked is here. A specific vision of what the second should make players feel is here. Everything else — the combat team, the writers' room, the HK location consultants — those require studios and professionals. This document provides the one thing a whiteboard can't.</p>
+        <p class="body" style="margin-bottom:1.5rem">Everything in this document needs refinement. The combat system needs iteration. The narrative needs a writers' room with people who are from Hong Kong. The character ages need a production bible. The market case needs a proper analyst. This is a starting point, not a final answer.</p>
+        <p class="body">The one rule remains: every system, mechanic, and mission must ask what SD1 asked. <em>How much of yourself are you willing to destroy to protect something you love?</em> Build from that. Everything else follows.</p>
+      </div>
+      <div>
+        <div class="fan-note">
+          <p>The games industry loves to ask what players want. Sleeping Dogs fans have been answering clearly for twelve years. The demand didn't die — it calcified. Every year without a sequel is another year of exactly the audience you want, growing older, earning more, waiting for the thing that made them love games again. A sequel was in development in 2013. It was cancelled. That decision was wrong then and it is wrong now. Stop leaving this on the table.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="g3">
+      <div class="card">
+        <h3 class="ctitle">What This Is</h3>
+        <ul class="clist" style="margin-top:.5rem">
+          <li>A fan-authored concept document</li>
+          <li>A corrected, wiki-verified character roster</li>
+          <li>A narrative and mechanical vision</li>
+          <li>A market case built from lived knowledge</li>
+          <li>A starting point for real development</li>
+        </ul>
+      </div>
+      <div class="card g">
+        <h3 class="ctitle">What This Isn't</h3>
+        <ul class="clist" style="margin-top:.5rem">
+          <li>A production-ready GDD</li>
+          <li>A replacement for professional writers</li>
+          <li>Affiliated with Square Enix or United Front</li>
+          <li>A final design — everything needs refinement</li>
+          <li>Guaranteed to make everyone happy — nothing is</li>
+        </ul>
+      </div>
+      <div class="card b">
+        <h3 class="ctitle b">The One Rule</h3>
+        <p style="font-size:.85rem;color:var(--smoke);line-height:1.8;margin-top:.5rem">Every system, every mechanic, every mission must ask what Sleeping Dogs 1 asked: <em>How much of yourself are you willing to destroy to protect something you love?</em> Build from that. Everything else follows from that single question.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ CLOSING -->
+<section id="closing">
+  <div class="container">
+    <div class="slide-label">Fin</div>
+    <h2 class="close-tag">There Is No Going <span class="r">Home Clean.</span></h2>
+    <div class="close-rule"></div>
+    <div class="close-bottom">
+      <div>
+        <div class="alert" style="max-width:480px">
+          <div class="alert-title">Final Note to Whoever Holds the IP</div>
+          <p>A sequel was in development in 2013. It was cancelled. The fan community is still here. The demand is still here. The cultural moment for a Hong Kong crime story told with this level of moral complexity is, if anything, larger now than it was in 2012. Make the game. Give it room to breathe. Don't release it against GTA 6. Let it be what it is — not the biggest game of the year, but the most itself.</p>
+        </div>
+      </div>
+      <div style="text-align:right">
+        <p style="font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--red);letter-spacing:.05em;line-height:1">73×</p>
+        <p style="font-family:'IBM Plex Mono',monospace;font-size:.6rem;color:var(--smoke2);letter-spacing:.15em;text-transform:uppercase">Times Completed by This Fan</p>
+        <p style="font-family:'IBM Plex Mono',monospace;font-size:.6rem;color:var(--smoke2);letter-spacing:.15em;text-transform:uppercase;margin-top:.2rem">Since Release Day — 2012</p>
+        <p style="font-family:'IBM Plex Mono',monospace;font-size:.6rem;color:var(--red);letter-spacing:.15em;text-transform:uppercase;margin-top:.2rem">Still Waiting.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Sleeping Dogs 2 — Fan Concept Pitch v2 &nbsp;·&nbsp; <span class="r">Not affiliated with Square Enix, United Front Games, or any rights holder</span></p>
+  <p>Character details verified against Sleeping Dogs Wiki. Built by a fan. For the fans. Since <span class="r">2012.</span></p>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+  const s=window.scrollY,h=document.documentElement.scrollHeight-window.innerHeight;
+  document.getElementById('progress').style.width=(h>0?(s/h*100):0)+'%';
+});
+</script>
+</body>
+</html>
